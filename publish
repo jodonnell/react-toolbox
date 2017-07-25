@@ -1,0 +1,3 @@
+git branch -D compiled
+npm run build && git checkout -b compiled && git add -f lib && git commit -n -m 'Compiled' && git push jacob -f compiled
+git checkout dev
