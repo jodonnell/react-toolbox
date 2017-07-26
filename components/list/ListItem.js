@@ -66,6 +66,12 @@ const factory = (ripple, ListItemLayout, ListItemContent) => {
       return children;
     }
 
+    handleEnterPress = (event) => {
+      if (event.key === 'Enter') {
+        this.handleClick();
+      }
+    }
+
     render() {
       const {
         className,
@@ -80,7 +86,7 @@ const factory = (ripple, ListItemLayout, ListItemContent) => {
       const children = this.groupChildren();
       const content = <ListItemLayout theme={theme} {...children} {...other} />;
       return (
-        <li className={`${theme.listItem} ${className}`} onClick={this.handleClick} onMouseDown={onMouseDown} onTouchStart={onTouchStart}>
+        <li tabIndex="0" className={`${theme.listItem} ${className}`} onClick={this.handleClick} onMouseDown={onMouseDown} onTouchStart={onTouchStart} onKeyDown={this.handleEnterPress}>
           {to ? <a href={this.props.to}>{content}</a> : content}
           {children.ignored}
         </li>
